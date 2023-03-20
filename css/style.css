@@ -44,10 +44,29 @@ body {
     width: 170px;
 }
 
+.welcome_section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.welcome_section img {
+    margin-bottom: 50px;
+}
+
 .main_section {
     height: 100%;
     display: flex;
     justify-content: center;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.ms_navigator {
+    display: ;
 }
