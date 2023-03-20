@@ -54,10 +54,28 @@
         <!-- Logic -->
         <script>
             document.body.onload = function() {
+                $.ajax({
+                    url: '/pwa/screen/main.html',
+                    method: 'get',
+                    dataType: 'html',
+                    async: false,
+                    success: function(data){
+                        $('.main_section').empty();
+                        $('.main_section').append(data);
+                    }
+                });
                 setTimeout(function() {
                     $('.sl_img').fadeOut(500);
                     $('.start_loading_section').slideUp(1500);
                 }, 2000);
+            }
+
+            function start_loading() {
+                $('.loading_section').css("display", "flex").hide().fadeIn(500);
+            }
+
+            function end_loading() {
+                $('.loading_section').fadeOut(500);
             }
         </script>
     </body>
