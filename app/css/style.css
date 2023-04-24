@@ -3,7 +3,91 @@
 * {
     margin: 0;
     padding: 0;
-    text-decoration: 0;
     font-family: 'Nunito', sans-serif;
+    outline: none;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F5F5F5;
+}
+
+/* Loadings */
+.start_loading_section, .loading_section {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2B4129;
+    z-index: 999;
+}
+
+.loading_section {
+    display: none;
+}
+
+.sl_img, .l_img {
+    width: 120px;
+}
+
+/* Welcome section */
+.welcome_section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.welcome_section img {
+    margin-bottom: 50px;
+}
+
+.welcome_section p a {
+    color: #2B4129;
+    font-weight: 500;
+}
+
+/* PWA STYLE */
+.pwa_main_section {
+    width: 100%;
+    max-width: 425px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pwa_auch_false {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #F2FFF1;
+    background-color: #2B4129;
+    border-radius: 0 0 30px 30px;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
+
+.pwa_auch_false p {
+    color: #87BC83;
+}
