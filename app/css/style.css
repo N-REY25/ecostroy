@@ -66,28 +66,16 @@ body {
 
 /* PWA STYLE */
 .pwa_main_section {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
     width: 100%;
-    max-width: 425px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.pwa_auch_false {
-    height: 100px;
+.pwa_main {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    color: #F2FFF1;
-    background-color: #2B4129;
-    border-radius: 0 0 30px 30px;
-    padding-top: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 20px;
-}
-
-.pwa_auch_false p {
-    color: #87BC83;
 }
