@@ -263,3 +263,76 @@ body {
     padding-right: 20px;
     margin-bottom: 20px;
 }
+
+.pm_grid_a {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 40px;
+}
+
+.pm_grid_a a {
+    position: relative;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    background-color: #D8ECD7;
+    color: #2B4129;
+    border-radius: 30px;
+    overflow: hidden;
+    filter: drop-shadow(4.38095px 4.38095px 10.9524px rgba(0, 0, 0, 0.1));
+}
+
+.pm_grid_a a img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.pm_grid_a a p {
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.pm_list_shka {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.pm_list_shka a {
+    position: relative;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.pm_list_shka a div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #00000030;
+}
+
+.pm_list_shka a img {
+    object-fit: cover;
+}
+
+.pm_list_shka a p {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    z-index: 1;
+}
