@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <!-- Meta -->
+        <title>EcoStroy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="description" content="Ecostroy является экспертом в области строительства жилых и коммерческих объектов. Мы предоставляем полный спектр услуг, начиная от проектирования и разработки дизайна до строительства и ремонта объектов любой сложности.">
+
+        <!-- Link -->
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+        <!-- JQ -->
+        <script src="/js/jquery.js"></script>
+
+        <!-- Apple icon -->
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/pwa/icon_120.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/icon_180.png">
+
+        <!-- Manifest config -->
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#2B4129">
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js')
+                .then(() => navigator.serviceWorker.ready.then((worker) => {
+                    worker.sync.register('syncdata');
+                }))
+                .catch((err) => console.log(err));
+            }
+        </script>
+
+        <!-- Digital signature -->
+        <script>
+            console.log('Настоящей подписью PWA зарегистрирован как авторская работа!\n\nКонтактные данные:\n- Тел.: +7 (952) 196-86-36\n- VK: @n_rey25')
+        </script>
+    </head>
+    <body>
+        <!-- Main loading -->
+        <!-- <section class="start_loading_section"> -->
+            <!-- <img class="sl_img" src="/img/logo_t.svg"> -->
+        <!-- </section> -->
+
+        <!-- PWA -->
+        <section class="pwa_main_section">
+            <a class="pm_userinfo" href="">
+                <h2>Добро пожаловать</h2>
+                <p>Авторизуйтесь,<br>для персональных предложений</p>
+            </a>
+            <div class="pm_grid_a">
+                <a href="#">
+                    <p>Квартиры</p>
+                    <img src="/img/home.svg">
+                </a>
+                <a href="#">
+                    <p>Коттеджи</p>
+                    <img src="/img/kvart.svg">
+                </a>
+                <a href="#">
+                    <p>Доп.<br>услуги</p>
+                    <img src="/img/molot.svg">
+                </a>
+                <a href="#">
+                    <p>Управ.<br>компания</p>
+                    <img src="/img/yprav.svg">
+                </a>
+            </div>
+            <h2 class="pm_h2">Рекомендуемые ЖК</h2>
+            <div class="pm_list_shka">
+                <!-- Array Shka -->
+            </div>
+            <script>
+                var data = ajax_data();
+
+                $('.pm_list_shka').empty();
+                for (data['residential_complexes'] in res_com) {
+                    for (res_com in i) {
+                        $('.pm_list_shka').append('<a href="' + i['url'] + '"><div></div><img src="' + i['photo'] + '"><p>' + i['name'] + '</p></a>');
+                    } 
+                }
+            </script>
+        </section>
+
+        <!-- Logic -->
+        <script>
+            document.body.onload = function() {
+                setTimeout(function() {
+                    $('.sl_img').fadeOut(500);
+                    $('.start_loading_section').slideUp(1500);
+                }, 2000);
+            }
+
+            function ajax_data() {
+                $.ajax({
+                url: '/api/',
+                method: 'get',
+                dataType: 'json',
+                data: {},
+                success: function(data) {
+                    return data;
+                }
+            });
+            }
+        </script>
+    </body>
+</html>
