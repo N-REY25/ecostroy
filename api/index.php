@@ -1,5 +1,5 @@
 <?php
-    require_once 'orm/db.php';
+    require_once '../orm/db.php';
 
     function get_apartments() {
         $list = R::findAll('apartments');
@@ -58,13 +58,9 @@
                 'name'=>$i['name'],
                 'photo'=>$i['photo'],
                 'deadline'=>$i['deadline'],
-                'class'=>$i['class'],
                 'floors'=>$i['floors'],
                 'buildings'=>$i['buildings'],
-                'type_of_house'=>$i['type_of_house'],
-                'ceiling_height'=>$i['ceiling_height'],
-                'finishing_options'=>$i['finishing_options'],
-                'parking'=>$i['parking']
+                'total_area'=>$i['total_area']
             ]);
         }
         return $array;
