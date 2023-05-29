@@ -24,11 +24,3 @@
 <div class="pm_list_shka">
     <!-- Array Shka -->
 </div>
-<script>
-    function data_func(data) {
-        $('.pm_list_shka').empty();
-        for (var i=0; i in data['residential_complexes']; i++) {
-            $('.pm_list_shka').append('<a href="' + data['residential_complexes'][i]['id'] + '"><div></div><img src="/img/shka/' + data['residential_complexes'][i]['photo'] + '"><p>' + data['residential_complexes'][i]['name'] + '</p></a>');
-        }
-    }
-</script>

@@ -81,6 +81,7 @@ body {
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
+    z-index: 10;
 }
 
 .n_back {
@@ -326,6 +327,7 @@ body {
 
 .pm_list_shka a img {
     object-fit: cover;
+    margin-top: -30px;
 }
 
 .pm_list_shka a p {
@@ -335,4 +337,18 @@ body {
     font-size: 20px;
     font-weight: 700;
     z-index: 1;
+}
+
+#pm_rescom_img {
+    position: absolute;
+    top: 0;
+    height: 300px;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.pm_rescom_info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 290px;
 }

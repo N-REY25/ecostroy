@@ -44,46 +44,71 @@
         </section>
 
         <!-- PWA -->
-        <section class="pwa_main_section">
-            
-        </section>
+        <section class="pwa_main_section"></section>
 
         <!-- Logic -->
         <script>
-            document.body.onload = function() {
-                setTimeout(function() {
-                    $('.sl_img').fadeOut(500);
-                    $('.start_loading_section').slideUp(1500);
-                }, 2000);
-                ajax_screen('main');
+            function loading_start() {
+                $('.start_loading_section').slideDown(1500);
+                setTimeout(function() {$('.sl_img').fadeIn(500);}, 300);
             }
 
-            function ajax_screen(screen) {
+            function loading_stop() {
+                $('.sl_img').fadeOut(500);
+                $('.start_loading_section').slideUp(1500);
+            }
+
+            document.body.onload = function() {
+                ajax_screen('main');
+                setTimeout(function() {loading_stop()}, 2000);
+            }
+
+            function ajax_screen(screen, get_param) {
                 var url = screen + '.html';
 
-                $.ajax({
-                    url: '/pwa/screen/' + url,
-                    method: 'get',
-                    dataType: 'html',
-                    success: function(data) {
-                        $('.pwa_main_section').empty();
-                        $('.pwa_main_section').append(data);
-                    }
-                });
+                loading_start();
+
+                setTimeout(function() {
+                    $.ajax({
+                        url: '/pwa/screen/' + url,
+                        method: 'get',
+                        dataType: 'html',
+                        success: function(data) {
+                            $('.pwa_main_section').empty();
+                            $('.pwa_main_section').append(data);
+                        }
+                    });
+
+                    ajax_data(screen, get_param);
+                }, 2000);
             }
 
-            function ajax_data() {
+            function ajax_data(page, get) {
                 $.ajax({
                     url: '/api/',
                     method: 'get',
                     dataType: 'json',
                     success: function(data) {
-                        data_func(data);
+                        page_data(page, data, get);
                     }
                 });
+                loading_stop();
             }
 
-            ajax_data();
+            function page_data(page, data, get) {
+                if (page == 'main') {
+                    data = data.residential_complexes;
+                    $('.pm_list_shka').empty();
+                    for (var i = 0; data; i++) {
+                        $('.pm_list_shka').append('<a onclick="ajax_screen(`rescom`, ' + i + ')"><div></div><img src="/img/shka/' + data[i].photo + '"><p>' + data[i].name + '</p></a>');
+                    }
+                } else if (page == 'rescom') {
+                    data = data.residential_complexes;
+                    $('#pm_rescom_img').attr("src", '/img/shka/' + data[get].photo);
+                    $('#pm_rescom_img').attr("alt", data[get].name);
+                    $('#pm_rescom_h2').text(data[get].name);
+                }
+            }
         </script>
     </body>
 </html>
