@@ -5,6 +5,6 @@
     <img src="/img/logo_t3.svg">
     <input id="input_log_1" type="tel" placeholder="Номер телефона">
     <input id="input_log_2" type="password" placeholder="Пароль">
-    <a id="login" href="#">Войти</a>
+    <a id="login" onclick="login($('#input_log_1').val(), $('#input_log_2').val())">Войти</a>
     <a id="next" onclick="ajax_screen('reg_1')">Зарегистрироваться</a>
 </div>
