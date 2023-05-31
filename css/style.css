@@ -326,8 +326,8 @@ body {
 }
 
 .pm_list_shka a img {
+    height: 100%;
     object-fit: cover;
-    margin-top: -30px;
 }
 
 .pm_list_shka a p {
@@ -336,7 +336,7 @@ body {
     left: 20px;
     font-size: 20px;
     font-weight: 700;
-    z-index: 1;
+    z-index: 2;
 }
 
 #pm_rescom_img {
@@ -348,7 +348,56 @@ body {
 }
 
 .pm_rescom_info {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 290px;
+    background-color: #fff;
+    border-radius: 20px 20px 0 0;
+    margin-top: 260px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 25;
+}
+
+#pm_rescom_description {
+    text-align: justify;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.pmr_info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    background-color: #D8ECD7;
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pmr_info_item {
+    display: flex;
+}
+
+.pmr_info_item img {
+    width: 30px;
+}
+
+.pmr_info_item div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.pmr_info_item div p {
+    color: #707070;
+    font-size: 12px;
+}
+
+.pmr_info_item div h4 {
+    color: #2B4129;
+    font-size: 12px;
 }

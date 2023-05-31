@@ -56,6 +56,7 @@
             array_push($array, [
                 'id'=>$i['id'],
                 'name'=>$i['name'],
+                'description'=>$i['description'],
                 'photo'=>$i['photo'],
                 'deadline'=>$i['deadline'],
                 'floors'=>$i['floors'],
