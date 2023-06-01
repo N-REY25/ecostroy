@@ -137,6 +137,17 @@
                     for (var i = 0; data; i++) {
                         $('.pm_aparts').append('<a onclick="ajax_screen(`apart`, ' + i + ')"><img src="/img/home/' + data[i].photo + '"><div><h2>' + data[i].title + '</h2><p>' + data[i].price + ' ₽</p><span>' +data[i].price_metr + ' ₽ / м2</span></div></a>');
                     }
+                } else if (page == 'apart') {
+                    data = data.apartments;
+                    $('#pm_rescom_img').attr("src", '/img/home/' + data[get].photo);
+                    $('#pm_rescom_img').attr("alt", data[get].name);
+                    $('#pm_rescom_name').text(data[get].title);
+                    $('#pm_rescom_description').text(data[get].description);
+                    $('#pmr_1').text(data[get].total_area + 'м²');
+                    $('#pmr_2').text(data[get].floor);
+                    $('#pmr_3').text(data[get].living_area + 'м²');
+                    $('#pmr_4').text(data[get].finishing);
+                    $('#pmr_5').text(data[get].kitchen_area + 'м²');
                 }
             }
 
