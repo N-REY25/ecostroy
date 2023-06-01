@@ -68,6 +68,10 @@
 
                 loading_start();
 
+                if (screen == 'login') {
+
+                }
+
                 setTimeout(function() {
                     $.ajax({
                         url: '/pwa/screen/' + url,
@@ -88,6 +92,7 @@
                     url: '/api/',
                     method: 'get',
                     dataType: 'json',
+                    data: {data: 'pwa'},
                     success: function(data) {
                         page_data(page, data, get);
                     }
@@ -97,6 +102,12 @@
 
             function page_data(page, data, get) {
                 if (page == 'main') {
+                    if (localStorage.user == true) {
+                        $('#userinfo_name').text('Добро пожаловать,<br>' + localStorage.user_name);
+                        $('#userinfo_text').text('Уведомления отсутствуют <i class="fa fa-bell-slash" aria-hidden="true"></i>');
+                        $('.pm_userinfo').append('<img id="img_user_photo" src="/img/users/' + localStorage.user_photo  + '">');
+                        $('.pm_userinfo').append('<img id="img_user_svg" src="/img/icouser.svg">');
+                    }
                     data = data.residential_complexes;
                     $('.pm_list_shka').empty();
                     for (var i = 0; data; i++) {
@@ -116,8 +127,26 @@
             }
 
             function login(login, password) {
-                if (login == '' || password == '') {
-                    
+                if (login !== '' && password !== '') {
+                    $.ajax({
+                    url: '/api/',
+                    method: 'post',
+                    dataType: 'json',
+                    data: {data: 'login', login: login, password: password},
+                    success: function(data) {
+                        if (data.status == 'successful') {
+                            localStorage.user = true;
+                            localStorage.user_name = data.name;
+                            localStorage.user_surname = data.surname;
+                            localStorage.user_phone = data.phone;
+                            localStorage.user_email = data.email;
+                            localStorage.user_photo = data.photo;
+                            ajax_screen('main');
+                        } else {
+                            alert('Номер телефона или пароль неверный!');
+                        }
+                    }
+                });
                 } else {
                     alert('Номер телефона или пароль неверный!');
                 }

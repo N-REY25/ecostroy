@@ -235,6 +235,7 @@ body {
 }
 
 .pm_userinfo {
+    position: relative;
     height: 100px;
     display: flex;
     flex-direction: column;
@@ -257,6 +258,21 @@ body {
     color: #87BC83;
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 20px;
+}
+
+#img_user_photo {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    object-fit: cover;
+    border-radius: 1000px;
+}
+
+#img_user_svg {
+    position: absolute;
+    top: 40px;
+    right: 35px;
 }
 
 .pm_h2 {
