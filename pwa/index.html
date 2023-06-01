@@ -115,7 +115,6 @@
                         $('.pm_userinfo').append('<img id="img_user_svg" src="/img/icouser.svg">');
                     }
                     data = data.residential_complexes;
-                    $('.pm_list_shka').empty();
                     for (var i = 0; data; i++) {
                         $('.pm_list_shka').append('<a onclick="ajax_screen(`rescom`, ' + i + ')"><div></div><img src="/img/shka/' + data[i].photo + '"><p>' + data[i].name + '</p></a>');
                     }
@@ -133,6 +132,11 @@
                     $('#userprof_photo').attr("src", '/img/users/' + localStorage.user_photo);
                     $('#sn').text(localStorage.user_surname + ' ' + localStorage.user_name);
                     $('#email').text(localStorage.user_email);
+                } else if (page == 'aparts') {
+                    data = data.apartments;
+                    for (var i = 0; data; i++) {
+                        $('.pm_aparts').append('<a onclick="ajax_screen(`apart`, ' + i + ')"><img src="/img/home/' + data[i].photo + '"><div><h2>' + data[i].title + '</h2><p>' + data[i].price + ' ₽</p><span>' +data[i].price_metr + ' ₽ / м2</span></div></a>');
+                    }
                 }
             }
 
