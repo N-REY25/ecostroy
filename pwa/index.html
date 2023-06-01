@@ -68,8 +68,12 @@
 
                 loading_start();
 
-                if (screen == 'login') {
-
+                if (screen == 'login' && localStorage.user == 'true') {
+                    screen = 'user';
+                    url = 'user.html';
+                } else if (screen == 'logout' && localStorage.user == 'true') {
+                    localStorage.user = 'false';
+                    ajax_screen('main');
                 }
 
                 setTimeout(function() {
@@ -102,9 +106,11 @@
 
             function page_data(page, data, get) {
                 if (page == 'main') {
-                    if (localStorage.user == true) {
-                        $('#userinfo_name').text('Добро пожаловать,<br>' + localStorage.user_name);
-                        $('#userinfo_text').text('Уведомления отсутствуют <i class="fa fa-bell-slash" aria-hidden="true"></i>');
+                    if (localStorage.user == 'true') {
+                        $('#userinfo_name').empty();
+                        $('#userinfo_text').empty();
+                        $('#userinfo_name').append('Добро пожаловать,<br>' + localStorage.user_name);
+                        $('#userinfo_text').append('Уведомления отсутствуют <i class="fa fa-bell-slash" aria-hidden="true"></i>');
                         $('.pm_userinfo').append('<img id="img_user_photo" src="/img/users/' + localStorage.user_photo  + '">');
                         $('.pm_userinfo').append('<img id="img_user_svg" src="/img/icouser.svg">');
                     }
@@ -123,6 +129,10 @@
                     $('#pmr_2').text(data[get].floors);
                     $('#pmr_3').text(data[get].deadline);
                     $('#pmr_4').text(data[get].buildings);
+                } else if (page == 'user') {
+                    $('#userprof_photo').attr("src", '/img/users/' + localStorage.user_photo);
+                    $('#sn').text(localStorage.user_surname + ' ' + localStorage.user_name);
+                    $('#email').text(localStorage.user_email);
                 }
             }
 
@@ -135,7 +145,7 @@
                     data: {data: 'login', login: login, password: password},
                     success: function(data) {
                         if (data.status == 'successful') {
-                            localStorage.user = true;
+                            localStorage.user = 'true';
                             localStorage.user_name = data.name;
                             localStorage.user_surname = data.surname;
                             localStorage.user_phone = data.phone;
